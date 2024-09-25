@@ -6,8 +6,6 @@ branches:
   only:
     - master  # ветка git
     - main
-  except:
-    - gh-pages
 
 cache: node_modules  # кеширование
 
