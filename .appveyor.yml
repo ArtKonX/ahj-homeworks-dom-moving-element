@@ -6,7 +6,6 @@ branches:
   only:
     - master  # ветка git
     - main
-    - gh-pages
 
 cache: node_modules  # кеширование
 
@@ -19,11 +18,11 @@ build_script:
   - yarn build   # команда сборки
 
 test_script:
-  - yarn lint # скрипт тестирования
+  - yarn lint && yarn test  # скрипт тестирования
 
 deploy_script:  # скрипт развёртывания
   - git config --global credential.helper store
   - git config --global user.name AppVeyor
   - git config --global user.email ci@appveyor.com
   - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
-  - npx gh-pages -d dist -u "appveyor-bot <ci@appveyor.com>"
+  - npx gh-pages -d dist -u "appveyor-bot <ci@appveyor>"
